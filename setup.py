@@ -11,9 +11,9 @@ setup(
   download_url = '',    # I explain this later on
   keywords = ['random defect model', '2D materials', 'transition metal dichalcogenide '],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
+          'ase',
           'numpy',
-          'scipy',
-          'scikit-image',
+          'matplotlib',
           'scikit-learn',
       ],
   classifiers=[
