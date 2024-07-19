@@ -26,9 +26,14 @@ random = _LazyLoader('randmx2.random')
 # Explicit imports for frequently used functions or classes
 # These are assumed to be lightweight and commonly used enough to justify immediate loading.
 from randmx2.random.random_defect_model import VacRandomModel   # Assuming this is lightweight
-
+from randmx2.rdf._rdf import get_rdf
+from randmx2.rdf._rdf import get_rdf_ij
+from randmx2.rdf._rdf import get_rdf_cnts
 
 __all__ = [
     'random',
     'VacRandomModel',
+    'get_rdf',
+    'get_rdf_ij',
+    'get_rdf_cnts',
 ]

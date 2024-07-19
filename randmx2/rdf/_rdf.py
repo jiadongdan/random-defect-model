@@ -53,3 +53,18 @@ def get_rdf_ij(pts1, pts2, rmax=30, bins=150, fixed_bins=False):
     y = cnts / (2 * np.pi * R * dr) * rho / N
     y[0] = 0
     return R, y
+
+def get_rdf_cnts(pts1, pts2, rmax=30, bins=150, fixed_bins=False):
+    pts_, area = get_pts_selected(pts1, rmax=rmax)
+    nbrs = NearestNeighbors(radius=rmax, algorithm='ball_tree').fit(pts_)
+    d, inds = nbrs.radius_neighbors(pts2)
+    d = np.hstack(d)
+    # d = d[d>0]
+    N = len(pts_)
+
+    if fixed_bins:
+        bins = np.linspace(0, rmax, bins)
+
+    cnts, bin_edges = np.histogram(d, bins=bins)
+    R = 0.5 * (bin_edges[1:] + bin_edges[0:-1])
+    return R, cnts
